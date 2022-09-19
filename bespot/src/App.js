@@ -1,9 +1,9 @@
 import "./App.css";
-
 import CardComponent from "./components/CardComponent";
 import ResponsiveAppBar from "./components/ResponsiveAppBar";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [experience, setExperience] = useState([]);
@@ -34,8 +34,10 @@ function App() {
 
       <body className="homepage-body">
         <h1 className="title_item">Best Rated</h1>;
-        <CardComponent experience={experience} />;<h1 className="title_item">Last Bespot</h1>;
-        <CardComponent experience={experience} />;<h1 className="title_item">Reco for Ya</h1>;
+        <CardComponent experience={experience} />;
+        <h1 className="title_item">Last Bespot</h1>;
+        <CardComponent experience={experience} />;
+        <h1 className="title_item">Reco for Ya</h1>;
         <CardComponent experience={experience} />;
       </body>
     </div>
