@@ -15,6 +15,13 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import Sheet from "@mui/joy/Sheet";
+import RadioGroup from "@mui/joy/RadioGroup";
+import Radio from "@mui/joy/Radio";
+import SignUp from "./SignUp";
+import { Link } from "react-router-dom";
+import { useContext } from "react"; // <== IMPORT
+import { AuthContext } from "../context/auth.context";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -78,6 +85,7 @@ const ResponsiveAppBar = () => {
     setAnchorElUser(null);
   };
 
+  const [variant, setVariant] = React.useState("solid");
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -158,7 +166,11 @@ const ResponsiveAppBar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button key={page} onClick={handleCloseNavMenu} sx={{ my: 2, color: "white", display: "block" }}>
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
                 {page}
               </Button>
             ))}
@@ -167,8 +179,39 @@ const ResponsiveAppBar = () => {
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
-            <StyledInputBase placeholder="Search…" inputProps={{ "aria-label": "search" }} />
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ "aria-label": "search" }}
+            />
           </Search>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 3,
+            }}
+          >
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, minmax(80px, 1fr))",
+                gap: 1,
+              }}
+            >
+              <SignUp />
+              <Button size="md" variant={variant} color="neutral">
+                LogIn
+              </Button>
+            </Box>
+            <Sheet
+              sx={{
+                background: "transparent",
+                pl: 4,
+                borderLeft: "1px solid",
+                borderColor: "divider",
+              }}
+            ></Sheet>
+          </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
