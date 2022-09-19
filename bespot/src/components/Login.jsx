@@ -8,19 +8,23 @@ import TextField from "@mui/joy/TextField";
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/auth_context";
+import { useContext } from "react";
 
 const LogIn = () => {
   const [open, setOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [infos, setInfos] = useState({ username: "", password: "" });
   const navigate = useNavigate();
+  const { storeToken } = useContext(AuthContext);
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     axios
       .post("https://bestspot.herokuapp.com/auth/login", infos)
       .then((response) => {
-        console.log(response);
+        console.log("JWT token", response.data.authToken);
+        storeToken(response.data.authToken);
         navigate("/home");
       })
       .catch((error) => {
@@ -88,7 +92,7 @@ const LogIn = () => {
               <p>
                 Don't have an account ? Sign up to take part of the journey !
               </p>
-              <Link to={"/user/signup"}>Sign up</Link>
+              <Link to={"/signup"}>Sign up</Link>
             </form>
           </Typography>
         </Sheet>

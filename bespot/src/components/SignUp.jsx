@@ -32,7 +32,7 @@ const SignUp = () => {
       });
   };
 
-  // Permet de gerer le changement d'etat dans les inuts.
+  // Permet de gerer le changement d'etat dans les inputs.
   const handleChange = (event) => {
     setInfos({ ...infos, [event.target.name]: event.target.value });
   };
