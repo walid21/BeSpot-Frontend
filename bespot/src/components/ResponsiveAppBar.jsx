@@ -21,7 +21,7 @@ import Radio from "@mui/joy/Radio";
 import SignUp from "./SignUp";
 import { Link } from "react-router-dom";
 import { useContext } from "react"; // <== IMPORT
-import { AuthContext } from "../context/auth.context";
+import { AuthContext } from "../context/auth_context";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -69,6 +69,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const { isLoggedIn, user } = useContext(AuthContext);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
