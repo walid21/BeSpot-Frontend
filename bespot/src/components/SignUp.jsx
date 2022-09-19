@@ -40,7 +40,7 @@ const SignUp = () => {
   return (
     <React.Fragment>
       <Button variant="outlined" color="neutral" onClick={() => setOpen(true)}>
-        SignUp
+        Signup
       </Button>
       <Modal
         aria-labelledby="close-modal-title"
@@ -101,7 +101,8 @@ const SignUp = () => {
                 placeholder="Password"
                 required
               /> */}
-              <Button type={"submit"}>Sign up</Button>
+              <Button type={"submit"}>Sign up</Button>{" "}
+              {/* insertion du boutton signup */}
               <p>Already have account?</p>
               <Link to={"/login"}>Login</Link>
             </form>

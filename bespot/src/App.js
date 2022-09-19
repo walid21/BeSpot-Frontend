@@ -4,6 +4,8 @@ import ResponsiveAppBar from "./components/ResponsiveAppBar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Routes, Route } from "react-router-dom";
+import SignUp from "./components/SignUp";
+import LogIn from "./components/LogIn";
 
 function App() {
   const [experience, setExperience] = useState([]);
@@ -30,6 +32,10 @@ function App() {
     <div className="App">
       <header className="website-header">
         <ResponsiveAppBar />
+        <Routes>
+          <Route path="/user/signup" element={<SignUp />} />
+          <Route path="/login" element={<LogIn />} />
+        </Routes>
       </header>
 
       <body className="homepage-body">

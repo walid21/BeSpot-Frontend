@@ -19,6 +19,7 @@ import Sheet from "@mui/joy/Sheet";
 import RadioGroup from "@mui/joy/RadioGroup";
 import Radio from "@mui/joy/Radio";
 import SignUp from "./SignUp";
+import LogIn from "./LogIn";
 import { Link } from "react-router-dom";
 import { useContext } from "react"; // <== IMPORT
 import { AuthContext } from "../context/auth_context";
@@ -200,9 +201,7 @@ const ResponsiveAppBar = () => {
               }}
             >
               <SignUp />
-              <Button size="md" variant={variant} color="neutral">
-                LogIn
-              </Button>
+              <LogIn />
             </Box>
             <Sheet
               sx={{
