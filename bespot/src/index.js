@@ -3,17 +3,17 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { AuthProviderWrapper } from "./context/auth.context";
-import { Router, Routes } from "react-router-dom";
+import { AuthProviderWrapper } from "./context/auth_context";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Router>
+    <BrowserRouter>
       <AuthProviderWrapper>
         <App />
       </AuthProviderWrapper>
-    </Router>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

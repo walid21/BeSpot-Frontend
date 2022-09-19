@@ -8,6 +8,12 @@ function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const storeToken = (token) => {
+    localStorage.setItem("authToken", token);
+  };
+  const removeToken = () => {
+    localStorage.removeItem("authToken");
+  };
 
   /* 
     Functions for handling the authentication status (isLoggedIn, isLoading, user)
@@ -15,7 +21,9 @@ function AuthProviderWrapper(props) {
   */
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, isLoading, user }}>
+    <AuthContext.Provider
+      value={{ isLoggedIn, isLoading, user, storeToken, removeToken }}
+    >
       {props.children}
     </AuthContext.Provider>
   );

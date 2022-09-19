@@ -13,20 +13,28 @@ const SignUp = () => {
   const [open, setOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
   const navigate = useNavigate();
+  const [infos, setInfos] = useState({ username: "", email: "", password: "" }); // state pour updater les infos de l'utilisateur quand il signup.
 
+  //Permet de gerer l'envoie du formulaire. on envoie les infos de l utilisateur a user/signup puis on e redirige a login.
   const handleSignupSubmit = (e) => {
     e.preventDefault();
 
     axios
-      .post("https://bestspot.herokuapp.com/user/signup")
+      .post("https://bestspot.herokuapp.com/user/signup", infos)
 
       .then((response) => {
+        console.log(response);
         navigate("/login");
       })
 
       .catch((error) => {
         setErrorMessage("nope");
       });
+  };
+
+  // Permet de gerer le changement d'etat dans les inuts.
+  const handleChange = (event) => {
+    setInfos({ ...infos, [event.target.name]: event.target.value });
   };
 
   return (
@@ -63,14 +71,37 @@ const SignUp = () => {
             fontWeight="lg"
           >
             <form onSubmit={handleSignupSubmit}>
-              <TextField label="Username" placeholder="Username" required />
-              <TextField label="Email" placeholder="Email" required />
-              <TextField label="Password" placeholder="Password" required />
+              <TextField
+                label="Username"
+                value={infos.username}
+                name="username"
+                placeholder="Username"
+                onChange={handleChange}
+                required
+              />
+              <TextField
+                label="Email"
+                value={infos.email}
+                name="email"
+                placeholder="Email"
+                onChange={handleChange}
+                required
+              />
+              <TextField
+                label="Password"
+                value={infos.password}
+                name="password"
+                type={"password"}
+                placeholder="Password"
+                onChange={handleChange}
+                required
+              />
               {/* <TextField
                 label="ConfirmationPassword"
                 placeholder="Password"
                 required
               /> */}
+              <Button type={"submit"}>Sign up</Button>
               <p>Already have account?</p>
               <Link to={"/login"}>Login</Link>
             </form>
