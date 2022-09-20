@@ -23,6 +23,7 @@ const LoginForm = ({ setOpen }) => {
       .then((response) => {
         console.log("JWT token", response.data);
         storeToken(response.data);
+        setOpen(false);
         navigate("/");
       })
       .catch((error) => {
