@@ -20,13 +20,7 @@ function AuthProviderWrapper(props) {
     will be added here later in the next step
   */
 
-  return (
-    <AuthContext.Provider
-      value={{ isLoggedIn, isLoading, user, storeToken, removeToken }}
-    >
-      {props.children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{ isLoggedIn, isLoading, user, setUser, storeToken, removeToken }}>{props.children}</AuthContext.Provider>;
 }
 
 export { AuthProviderWrapper, AuthContext };

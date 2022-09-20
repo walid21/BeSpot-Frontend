@@ -1,14 +1,16 @@
 import "./App.css";
-import CardComponent from "./components/CardComponent";
 import ResponsiveAppBar from "./components/ResponsiveAppBar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Routes, Route } from "react-router-dom";
 import SignUp from "./components/SignUp";
-import LogIn from "./components/LogIn";
+import LogIn from "./components/Login";
+import HomePage from "./HomePage";
+import AllSpots from "./components/AllSpots";
+import Profile from "./components/Profile";
 
 function App() {
-  const [experience, setExperience] = useState([]);
+  const [experiences, setExperiences] = useState([]);
 
   useEffect(() => {
     let config = {
@@ -20,13 +22,13 @@ function App() {
     axios(config)
       .then(function (response) {
         //console.log(JSON.stringify(response.data));
-        setExperience(response.data);
+        setExperiences(response.data);
       })
       .catch(function (error) {
         console.log(error);
       });
   }, []);
-  console.log(experience);
+  console.log(experiences);
 
   return (
     <div className="App">
@@ -34,18 +36,13 @@ function App() {
         <ResponsiveAppBar />
         <Routes>
           <Route path="/user/signup" element={<SignUp />} />
+          <Route path="/experiences" element={<AllSpots experiences={experiences} />} />
+          <Route path="/Profile" element={<Profile />} />
           <Route path="/login" element={<LogIn />} />
+
+          <Route path="/" element={<HomePage experiences={experiences} />} />
         </Routes>
       </header>
-
-      <body className="homepage-body">
-        <h1 className="title_item">Best Rated</h1>;
-        <CardComponent experience={experience} />;
-        <h1 className="title_item">Last Bespot</h1>;
-        <CardComponent experience={experience} />;
-        <h1 className="title_item">Reco for Ya</h1>;
-        <CardComponent experience={experience} />;
-      </body>
     </div>
   );
 }
