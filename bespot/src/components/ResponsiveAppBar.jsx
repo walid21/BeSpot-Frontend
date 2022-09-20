@@ -68,7 +68,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const { isLoggedIn, user, setUser, removeToken } = useContext(AuthContext);
+  const { setUser, removeToken } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
