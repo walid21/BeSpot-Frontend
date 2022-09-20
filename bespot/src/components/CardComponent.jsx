@@ -7,14 +7,16 @@ import CardCover from "@mui/joy/CardCover";
 import Chip from "@mui/joy/Chip";
 import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
-import Link from "@mui/joy/Link";
+import { Link as RouterLink } from "react-router-dom";
 import Favorite from "@mui/icons-material/Favorite";
 import Visibility from "@mui/icons-material/Visibility";
 import CreateNewFolder from "@mui/icons-material/CreateNewFolder";
+import { Link } from "@mui/joy";
 
 const CardComponent = ({ experience }) => {
+  console.log(experience);
   return (
-    <div key={experience.name} className="cardComponent">
+    <div key={experience._id} className="cardComponent">
       <Card
         sx={{
           minWidth: 300,
@@ -25,19 +27,21 @@ const CardComponent = ({ experience }) => {
       >
         <Box sx={{ position: "relative" }}>
           <AspectRatio ratio="4/3">
-            <figure>
-              <img
-                alt="BeSpotter"
-                width="330"
-                height="247"
-                sizes="338"
-                data-sizes="auto"
-                data-srcset={experience.picture}
-                data-src={experience.picture}
-                src={experience.picture}
-                srcSet={experience.picture}
-              />
-            </figure>
+            <Link to="/spot">
+              <figure>
+                <img
+                  alt="BeSpotter"
+                  width="330"
+                  height="247"
+                  sizes="338"
+                  data-sizes="auto"
+                  data-srcset={experience.picture}
+                  data-src={experience.picture}
+                  src={experience.picture}
+                  srcSet={experience.picture}
+                />
+              </figure>
+            </Link>
           </AspectRatio>
           <CardCover
             className="gradient-cover"
@@ -94,19 +98,23 @@ const CardComponent = ({ experience }) => {
             size="sm"
             sx={{ "--Avatar-size": "1.5rem" }}
           />
-          <Typography sx={{ fontSize: "sm", fontWeight: "md" }}>National Park</Typography>
-          <Chip
-            variant="outlined"
-            color="neutral"
-            size="sm"
-            sx={{
-              borderRadius: "sm",
-              py: 0.25,
-              px: 0.5,
-            }}
-          >
-            See more...click me pleaaaase
-          </Chip>
+          <Typography sx={{ fontSize: "sm", fontWeight: "md" }}>
+            National Park
+          </Typography>
+          <RouterLink to={`/${experience._id}`}>
+            <Chip
+              variant="outlined"
+              color="neutral"
+              size="sm"
+              sx={{
+                borderRadius: "sm",
+                py: 0.25,
+                px: 0.5,
+              }}
+            >
+              See more...click me pleaaaase
+            </Chip>
+          </RouterLink>
           <Link
             href="#dribbble-shot"
             level="body3"

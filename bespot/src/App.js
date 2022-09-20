@@ -8,6 +8,7 @@ import AllSpots from "./components/AllSpots";
 import Profile from "./components/Profile";
 import LoginPage from "./components/LoginPage";
 import SignUpPage from "./components/SignUpPage";
+import Spot from "./components/Spot";
 
 function App() {
   const [experiences, setExperiences] = useState([]);
@@ -35,11 +36,15 @@ function App() {
       <header className="website-header">
         <ResponsiveAppBar />
         <Routes>
-          <Route path="/experiences" element={<AllSpots experiences={experiences} />} />
+          <Route
+            path="/experiences"
+            element={<AllSpots experiences={experiences} />}
+          />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/" element={<HomePage experiences={experiences} />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/:id" element={<Spot experiences={experiences} />} />
         </Routes>
       </header>
     </div>
