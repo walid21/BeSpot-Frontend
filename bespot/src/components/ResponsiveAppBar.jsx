@@ -16,8 +16,6 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import Sheet from "@mui/joy/Sheet";
-import RadioGroup from "@mui/joy/RadioGroup";
-import Radio from "@mui/joy/Radio";
 import SignUp from "./SignUp";
 import LogIn from "./Login";
 import { Link, useNavigate } from "react-router-dom";
@@ -94,7 +92,6 @@ const ResponsiveAppBar = () => {
     navigate("/");
   };
 
-  const [variant, setVariant] = React.useState("solid");
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -175,7 +172,11 @@ const ResponsiveAppBar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button key={page} onClick={handleCloseNavMenu} sx={{ my: 2, color: "white", display: "block" }}>
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
                 {page}
               </Button>
             ))}
@@ -184,7 +185,10 @@ const ResponsiveAppBar = () => {
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
-            <StyledInputBase placeholder="Search…" inputProps={{ "aria-label": "search" }} />
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ "aria-label": "search" }}
+            />
           </Search>
           <Box
             sx={{
@@ -237,7 +241,10 @@ const ResponsiveAppBar = () => {
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">
-                    <Link to={`/${setting}`} onClick={setting === "Logout" && handleLogout}>
+                    <Link
+                      to={`/${setting}`}
+                      onClick={setting === "Logout" && handleLogout}
+                    >
                       {setting}
                     </Link>
                   </Typography>

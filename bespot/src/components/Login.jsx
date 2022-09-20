@@ -87,6 +87,7 @@ const LogIn = () => {
                 onChange={handleChange}
                 required
               />
+              {errorMessage && <p>{errorMessage}</p>}
               <Button type={"submit"}>Login</Button>{" "}
               {/* insertion du boutton signup */}
               <p>

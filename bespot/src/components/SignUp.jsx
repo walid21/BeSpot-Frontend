@@ -101,6 +101,7 @@ const SignUp = () => {
                 placeholder="Password"
                 required
               /> */}
+              {errorMessage && <p>{errorMessage}</p>}
               <Button type={"submit"}>Sign up</Button>{" "}
               {/* insertion du boutton signup */}
               <p>Already have account?</p>
