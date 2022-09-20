@@ -32,7 +32,7 @@ const SignUp = () => {
       });
   };
 
-  // Permet de gerer le changement d'etat dans les inuts.
+  // Permet de gerer le changement d'etat dans les inputs.
   const handleChange = (event) => {
     setInfos({ ...infos, [event.target.name]: event.target.value });
   };
@@ -101,6 +101,7 @@ const SignUp = () => {
                 placeholder="Password"
                 required
               /> */}
+              {errorMessage && <p>{errorMessage}</p>}
               <Button type={"submit"}>Sign up</Button>{" "}
               {/* insertion du boutton signup */}
               <p>Already have account?</p>
