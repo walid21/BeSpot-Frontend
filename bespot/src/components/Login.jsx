@@ -24,11 +24,10 @@ const LogIn = () => {
           justifyContent: "center",
         }}
       >
-        <LoginForm />
+        <LoginForm setOpen={setOpen} />
       </Modal>
     </>
   );
 };
 
 export default LogIn;
-//avfv
