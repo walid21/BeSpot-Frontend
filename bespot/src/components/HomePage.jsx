@@ -7,8 +7,8 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { Autocomplete } from "@mui/material";
-import CountrySelect from "./components/CountrySelect";
-import ActivitySelect from "./components/ActivitySelect";
+// import CountrySelect from "./components/CountrySelect";
+// import ActivitySelect from "./components/ActivitySelect";
 
 const HomePage = ({ experiences }) => {
   if (!experiences) {
@@ -24,30 +24,14 @@ const HomePage = ({ experiences }) => {
         }}
       >
         <Container maxWidth="sm">
-          <Typography
-            component="h1"
-            variant="h2"
-            align="center"
-            color="text.primary"
-            gutterBottom
-          >
+          <Typography component="h1" variant="h2" align="center" color="text.primary" gutterBottom>
             BeSpot
           </Typography>
-          <Typography
-            variant="h5"
-            align="center"
-            color="text.secondary"
-            paragraph
-          >
+          <Typography variant="h5" align="center" color="text.secondary" paragraph>
             Here is Your Fav Website : BESPOT
           </Typography>
 
-          <Stack
-            sx={{ pt: 4 }}
-            direction="row"
-            spacing={2}
-            justifyContent="center"
-          >
+          <Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="center">
             <Link to="/experiences">
               <Button variant="contained" component="a" href="/experiences">
                 Search a BeSpot
@@ -55,11 +39,7 @@ const HomePage = ({ experiences }) => {
             </Link>
           </Stack>
         </Container>
-        <Container class="container">
-          <CountrySelect />
-          <ActivitySelect />
-          <CountrySelect />
-        </Container>
+        <Container class="container">{/* <CountrySelect /> */}</Container>
       </Box>
 
       {/* End hero unit */}

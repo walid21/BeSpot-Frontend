@@ -1,9 +1,15 @@
 import React from "react";
 import Button from "@mui/joy/Button";
 import Add from "@mui/icons-material/Add";
+import { useNavigate } from "react-router-dom";
 
 const AddSpot = () => {
-  return <Button startdecorator={<Add />}>Create your Spot</Button>;
+  const navigate = useNavigate();
+  return (
+    <Button startdecorator={<Add />} onClick={() => navigate("/create")}>
+      Create your Spot
+    </Button>
+  );
 };
 
 export default AddSpot;

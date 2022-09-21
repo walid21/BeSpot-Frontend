@@ -71,34 +71,7 @@ const CreateSpot = ({ setExperiences }) => {
             accept="image/png, image/jpeg"
             onChange={(element) => setInfos({ ...infos, picture: element.target.files[0] })}
           />
-          {/* <ImageUploading
-            value={[]}
-            onChange={(element) => setInfos({ ...infos, picture: element.target.files[0] })}
-            maxNumber={1}
-            dataURLKey="data_url"
-            acceptType={["jpg"]}
-          >
-            {console.log(infos)}
-            {({ infos, onImageUpload, onImageRemoveAll, onImageUpdate, onImageRemove, isDragging, dragProps }) => (
-              // write your building UI
 
-              <div className="upload__image-wrapper">
-                <button style={isDragging ? { color: "red" } : null} startIcon={<UploadFileIcon />} onClick={onImageUpload} {...dragProps}>
-                  Click or Drop here
-                </button>
-
-                {
-                  <div className="image-item">
-                    <img src={URL.createObjectURL(infos.picture)} alt="" width="100" />
-                    <div className="image-item__btn-wrapper">
-                      <button onClick={() => onImageUpdate(0)}>Update</button>
-                      <button onClick={() => onImageRemove(0)}>Remove</button>
-                    </div>
-                  </div>
-                }
-              </div>
-            )}
-          </ImageUploading> */}
           {errorMessage && <p>{errorMessage}</p>}
           <Button
             type={"submit"}
