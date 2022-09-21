@@ -19,7 +19,7 @@ const LoginForm = ({ setOpen }) => {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://bestspot.herokuapp.com/auth/login", infos)
+      .post("http://localhost:5005/auth/login", infos)
       .then((response) => {
         storeToken(response.data);
         setOpen(false);
