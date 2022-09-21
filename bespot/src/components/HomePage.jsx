@@ -1,5 +1,5 @@
 import React from "react";
-import AllSpots from "./components/AllSpots";
+import AllSpots from "./AllSpots";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";

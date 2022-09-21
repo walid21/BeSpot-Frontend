@@ -22,6 +22,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react"; // <== IMPORT
 import { AuthContext } from "../context/auth_context";
 import avatarImg from "../image/avatar_icone.png";
+import AddSpot from "./AddSpot";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Logout"];
@@ -99,39 +100,44 @@ const ResponsiveAppBar = ({ setOpen, users }) => {
   function isLoggedIn() {
     if (storedToken) {
       return (
-        <Box sx={{ flexGrow: 0 }}>
-          <Tooltip title="Open settings">
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="user_avatar" src={avatarImg} />
-            </IconButton>
-          </Tooltip>
-          <Menu
-            sx={{ mt: "45px" }}
-            id="menu-appbar"
-            anchorEl={anchorElUser}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            open={Boolean(anchorElUser)}
-            onClose={handleCloseUserMenu}
-          >
-            {settings.map((setting) => (
-              <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">
-                  <Link to={`/${setting}`} onClick={setting === "Logout" && handleLogout}>
-                    {setting}
-                  </Link>
-                </Typography>
-              </MenuItem>
-            ))}
-          </Menu>
-        </Box>
+        <>
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="user_avatar" src={avatarImg} />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">
+                    <Link to={`/${setting}`} onClick={setting === "Logout" && handleLogout}>
+                      {setting}
+                    </Link>
+                  </Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+            <Link to="/create">
+              <AddSpot />
+            </Link>
+          </Box>
+        </>
       );
     } else {
       return;

@@ -21,7 +21,6 @@ const LoginForm = ({ setOpen }) => {
     axios
       .post("https://bestspot.herokuapp.com/auth/login", infos)
       .then((response) => {
-        console.log("JWT token", response.data);
         storeToken(response.data);
         setOpen(false);
         navigate("/");

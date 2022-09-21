@@ -9,7 +9,7 @@ const LogIn = () => {
 
   const storedToken = localStorage.getItem("authToken");
   // If the token exists in the localStorage
-  console.log(open);
+
   function isLoggedIn() {
     if (!storedToken) {
       return (

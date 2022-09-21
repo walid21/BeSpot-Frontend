@@ -14,7 +14,6 @@ import CreateNewFolder from "@mui/icons-material/CreateNewFolder";
 import { Link } from "@mui/joy";
 
 const CardComponent = ({ experience }) => {
-  console.log(experience);
   return (
     <div key={experience._id} className="cardComponent">
       <Card
@@ -98,9 +97,7 @@ const CardComponent = ({ experience }) => {
             size="sm"
             sx={{ "--Avatar-size": "1.5rem" }}
           />
-          <Typography sx={{ fontSize: "sm", fontWeight: "md" }}>
-            National Park
-          </Typography>
+          <Typography sx={{ fontSize: "sm", fontWeight: "md" }}>National Park</Typography>
           <RouterLink to={`/${experience._id}`}>
             <Chip
               variant="outlined"
