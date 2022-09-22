@@ -13,7 +13,7 @@ const Profile = ({ users }) => {
   useEffect(() => {
     let config = {
       method: "get",
-      url: "http://localhost:5005/experience/search?userId=me",
+      url: "https://bestspot.herokuapp.com/experience/search?userId=me",
       headers: { Authorization: `Bearer ${token}` },
     };
 
@@ -32,7 +32,7 @@ const Profile = ({ users }) => {
   function deleteExperience(id) {
     const config = {
       method: "delete",
-      url: `http://localhost:5005/experience/${id}`,
+      url: `https://bestspot.herokuapp.com/experience/${id}`,
       headers: { Authorization: `Bearer ${token}` },
     };
 

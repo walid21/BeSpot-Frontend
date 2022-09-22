@@ -25,7 +25,7 @@ const UpdateSpot = ({ setExperiences }) => {
   useEffect(() => {
     let config = {
       method: "get",
-      url: `http://localhost:5005/experience/${id}`,
+      url: `https://bestspot.herokuapp.com/experience/${id}`,
       headers: {
         Authorization: "Bearer " + localStorage.getItem("authToken"),
       },
@@ -84,11 +84,38 @@ const UpdateSpot = ({ setExperiences }) => {
         p: 3,
       }}
     >
-      <Typography component="h2" id="close-modal-title" level="h4" textColor="inherit" fontWeight="lg">
+      <Typography
+        component="h2"
+        id="close-modal-title"
+        level="h4"
+        textColor="inherit"
+        fontWeight="lg"
+      >
         <form onSubmit={handleSignupSubmit}>
-          <TextField label="name" value={infos.name} name="name" defaultValue={infos.name} placeholder="Name" onChange={handleChange} />
-          <TextField label="location" value={infos.location} name="location" defaultValue={infos.location} placeholder="Location" onChange={handleChange} />
-          <TextField label="theme" value={infos.theme} name="theme" defaultValue={infos.theme} placeholder="Theme" onChange={handleChange} />
+          <TextField
+            label="name"
+            value={infos.name}
+            name="name"
+            defaultValue={infos.name}
+            placeholder="Name"
+            onChange={handleChange}
+          />
+          <TextField
+            label="location"
+            value={infos.location}
+            name="location"
+            defaultValue={infos.location}
+            placeholder="Location"
+            onChange={handleChange}
+          />
+          <TextField
+            label="theme"
+            value={infos.theme}
+            name="theme"
+            defaultValue={infos.theme}
+            placeholder="Theme"
+            onChange={handleChange}
+          />
           <TextField
             label="description"
             value={infos.description}
@@ -97,14 +124,23 @@ const UpdateSpot = ({ setExperiences }) => {
             placeholder="description"
             onChange={handleChange}
           />
-          <TextField label="activity" value={infos.activity} name="activity" defaultValue={infos.activity} placeholder="Activity" onChange={handleChange} />
+          <TextField
+            label="activity"
+            value={infos.activity}
+            name="activity"
+            defaultValue={infos.activity}
+            placeholder="Activity"
+            onChange={handleChange}
+          />
 
           <input
             type="file"
             id="picture"
             name="picture"
             accept="image/png, image/jpeg"
-            onChange={(element) => setInfos({ ...infos, picture: element.target.files[0] })}
+            onChange={(element) =>
+              setInfos({ ...infos, picture: element.target.files[0] })
+            }
           />
 
           {errorMessage && <p>{errorMessage}</p>}

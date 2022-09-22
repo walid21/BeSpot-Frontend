@@ -19,7 +19,7 @@ const LoginForm = ({ setOpen }) => {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5005/auth/login", infos)
+      .post("https://bestspot.herokuapp.com/auth/login", infos)
       .then((response) => {
         storeToken(response.data);
         setOpen(false);
@@ -44,12 +44,34 @@ const LoginForm = ({ setOpen }) => {
       }}
     >
       <ModalClose variant="outlined" />
-      <Typography component="h2" id="close-modal-title" level="h4" textColor="inherit" fontWeight="lg">
+      <Typography
+        component="h2"
+        id="close-modal-title"
+        level="h4"
+        textColor="inherit"
+        fontWeight="lg"
+      >
         <form onSubmit={handleLoginSubmit}>
-          <TextField label="Username" value={infos.username} name="username" placeholder="Username" onChange={handleChange} required />
-          <TextField label="Password" value={infos.password} name="password" type={"password"} placeholder="Password" onChange={handleChange} required />
+          <TextField
+            label="Username"
+            value={infos.username}
+            name="username"
+            placeholder="Username"
+            onChange={handleChange}
+            required
+          />
+          <TextField
+            label="Password"
+            value={infos.password}
+            name="password"
+            type={"password"}
+            placeholder="Password"
+            onChange={handleChange}
+            required
+          />
           {errorMessage && <p>{errorMessage}</p>}
-          <Button type={"submit"}>Login</Button> {/* insertion du boutton signup */}
+          <Button type={"submit"}>Login</Button>{" "}
+          {/* insertion du boutton signup */}
           <p>Don't have an account ? Sign up to take part of the journey !</p>
           <Link to={"/signup"} onClick={() => setOpen(false)}>
             Sign up

@@ -9,7 +9,7 @@ const Spot = ({ experiences }) => {
   useEffect(() => {
     let config = {
       method: "get",
-      url: `http://localhost:5005/experience/${id}`,
+      url: `https://bestspot.herokuapp.com/experience/${id}`,
       headers: {
         Authorization: "Bearer " + localStorage.getItem("authToken"),
       },
