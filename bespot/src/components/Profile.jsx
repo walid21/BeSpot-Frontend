@@ -2,11 +2,12 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import CardComponent from "./CardComponent";
+import { useNavigate } from "react-router-dom";
 
 const Profile = ({ users }) => {
   const [myExperiences, setMyExperiences] = useState([]);
   const [click, setClick] = useState(false);
-
+  const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
 
   useEffect(() => {
@@ -27,9 +28,8 @@ const Profile = ({ users }) => {
       });
   }, [click]);
 
-  //DEL USER ACCOUNT
+  //DEL USER EXPERIENCE
   function deleteExperience(id) {
-    console.log(id);
     const config = {
       method: "delete",
       url: `http://localhost:5005/experience/${id}`,
@@ -38,14 +38,15 @@ const Profile = ({ users }) => {
 
     axios(config)
       .then(function (response) {
-        console.log("delete");
+        console.log("deleted");
       })
       .catch(function (error) {
         console.log(error);
       });
   }
+
   if (myExperiences.length === 0) {
-    return <h1>loading</h1>;
+    return <h1>LOADING...</h1>;
   }
   return (
     <>
@@ -55,14 +56,21 @@ const Profile = ({ users }) => {
           return (
             <>
               <CardComponent key={e._id} experience={e} />
-              <button onClick={() => console.log("update")}>Update</button>
+              <button
+                onClick={() => {
+                  navigate(`/update/${e._id}`);
+                  setClick(true);
+                }}
+              >
+                Update
+              </button>
               <button
                 onClick={() => {
                   deleteExperience(e._id);
                   setClick(true);
                 }}
               >
-                Remove
+                Delete
               </button>
             </>
           );

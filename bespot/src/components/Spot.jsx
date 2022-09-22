@@ -1,11 +1,28 @@
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Spot = ({ experiences }) => {
   const { id } = useParams();
+  const [spot, setSpot] = useState({});
 
-  const spot = experiences.find((element) => {
-    return element._id === id;
-  });
+  useEffect(() => {
+    let config = {
+      method: "get",
+      url: `http://localhost:5005/experience/${id}`,
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("authToken"),
+      },
+    };
+
+    axios(config)
+      .then(function (response) {
+        setSpot(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
 
   const styleImg = { width: "60%" };
 

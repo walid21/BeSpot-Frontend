@@ -24,7 +24,7 @@ const CardComponent = ({ experience }) => {
           "--Card-padding": "1rem",
         }}
       >
-        <RouterLink to={`/${experience._id}`}>
+        <RouterLink to={`/experience/${experience._id}`}>
           <Box sx={{ position: "relative" }}>
             <AspectRatio ratio="4/3">
               <figure>
