@@ -23,7 +23,7 @@ function AuthProviderWrapper(props) {
     if (storedToken) {
       // We must send the JWT token in the request's "Authorization" Headers
       axios
-        .get("https://bestspot.herokuapp.com/auth/login", {
+        .get("http://localhost:5005/auth/login", {
           headers: { Authorization: `Bearer ${storedToken}` },
         })
         .then((response) => {

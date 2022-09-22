@@ -6,7 +6,11 @@ import { useNavigate } from "react-router-dom";
 const AddSpot = () => {
   const navigate = useNavigate();
   return (
-    <Button startdecorator={<Add />} onClick={() => navigate("/create")}>
+    <Button
+      className="flex"
+      startdecorator={<Add />}
+      onClick={() => navigate("/create")}
+    >
       Create your Spot
     </Button>
   );

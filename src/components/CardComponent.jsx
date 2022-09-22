@@ -98,23 +98,14 @@ const CardComponent = ({ experience }) => {
             sx={{ "--Avatar-size": "1.5rem" }}
           />
 
-          <Typography sx={{ fontSize: "sm", fontWeight: "md" }}>National Park</Typography>
-          <RouterLink to={`/${experience._id}`}>
-            <Chip
-              variant="outlined"
-              color="neutral"
-              size="sm"
-              sx={{
-                borderRadius: "sm",
-                py: 0.25,
-                px: 0.5,
-              }}
-            >
-              See more...click me pleaaaase
-            </Chip>
-          </RouterLink>
+          <Typography sx={{ fontSize: "sm", fontWeight: "md" }}>
+            National Park
+          </Typography>
+          <RouterLink to={`/${experience._id}`}></RouterLink>
 
-          <Typography sx={{ fontSize: "sm", fontWeight: "md" }}>National Park</Typography>
+          <Typography sx={{ fontSize: "sm", fontWeight: "md" }}>
+            National Park
+          </Typography>
 
           <Link
             href="#dribbble-shot"

@@ -24,7 +24,6 @@ import { AuthContext } from "../context/auth_context";
 import avatarImg from "../image/avatar_icone.png";
 import AddSpot from "../components/AddSpot";
 
-const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Logout"];
 
 const Search = styled("div")(({ theme }) => ({
@@ -100,7 +99,7 @@ const ResponsiveAppBar = ({ setOpen, users }) => {
   function isLoggedIn() {
     if (storedToken) {
       return (
-        <Box sx={{ flexGrow: 0 }}>
+        <>
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               <Avatar alt="user_avatar" src={avatarImg} />
@@ -125,7 +124,10 @@ const ResponsiveAppBar = ({ setOpen, users }) => {
             {settings.map((setting) => (
               <MenuItem key={setting} onClick={handleCloseUserMenu}>
                 <Typography textAlign="center">
-                  <Link to={`/${setting}`} onClick={setting === "Logout" && handleLogout}>
+                  <Link
+                    to={`/${setting}`}
+                    onClick={setting === "Logout" && handleLogout}
+                  >
                     {setting}
                   </Link>
                 </Typography>
@@ -133,134 +135,56 @@ const ResponsiveAppBar = ({ setOpen, users }) => {
             ))}
           </Menu>
           <AddSpot />
-        </Box>
+        </>
       );
     } else {
-      return;
+      return (
+        <>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, minmax(80px, 1fr))",
+              gap: 1,
+            }}
+          >
+            <SignUp />
+            <LogIn />
+          </Box>
+          <Sheet
+            sx={{
+              background: "transparent",
+              pl: 4,
+              borderLeft: "1px solid",
+              borderColor: "divider",
+            }}
+          ></Sheet>
+        </>
+      );
     }
   }
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            BeSpot
-          </Typography>
+    <>
+      <AppBar className="appbar" position="static">
+        <Container maxWidth="xl">
+          <Toolbar className="main-toolbar" disableGutters>
+            <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button key={page} onClick={handleCloseNavMenu} sx={{ my: 2, color: "white", display: "block" }}>
-                {page}
-              </Button>
-            ))}
-          </Box>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase placeholder="Search…" inputProps={{ "aria-label": "search" }} />
-          </Search>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: 3,
-            }}
-          >
-            <Box
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "repeat(2, minmax(80px, 1fr))",
-                gap: 1,
-              }}
-            >
-              <SignUp />
-              <LogIn />
-            </Box>
-            <Sheet
-              sx={{
-                background: "transparent",
-                pl: 4,
-                borderLeft: "1px solid",
-                borderColor: "divider",
-              }}
-            ></Sheet>
-          </Box>
-          {isLoggedIn()}
-        </Toolbar>
-      </Container>
-    </AppBar>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
+            <Box>{isLoggedIn()}</Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </>
   );
 };
+
 export default ResponsiveAppBar;

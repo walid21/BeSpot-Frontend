@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Just+Another+Hand&family=MuseoModerno:wght@300&display=swap");
+
+.title-home-page {
+  font-size: 160px;
+  color: aliceblue;
+}
+
+.font-family {
+  font-family: "MuseoModerno", cursive;
+}
+
+.background-image-homepage {
+  position: relative;
+
+  background-image: url(../image/james-wheeler-InOgamK2cuY-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.color {
+  color: aliceblue;
+}
+
+text-align {
+  text-align: left;
+}

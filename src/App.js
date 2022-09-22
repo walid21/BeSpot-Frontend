@@ -15,7 +15,6 @@ function App() {
   const [experiences, setExperiences] = useState([]);
   const [logged, setLogged] = useState(false);
   const [users, setUsers] = useState([]);
-  const [infos, setInfos] = useState({ username: "", password: "" });
 
   const updateExperiences = () => {
     let config = {
@@ -55,13 +54,20 @@ function App() {
   return (
     <div className="App">
       <header className="website-header">
-        <ResponsiveAppBar setLogged={setLogged} users={users} infos={infos} />
+        <nav className="navigation-bar">NavBar</nav>
+        <ResponsiveAppBar setLogged={setLogged} users={users} />
         <Routes>
-          <Route path="/experiences" element={<AllSpots experiences={experiences} />} />
+          <Route
+            path="/experiences"
+            element={<AllSpots experiences={experiences} />}
+          />
           <Route path="/Profile" element={<Profile />} />
-          <Route path="/create" element={<CreateSpot setExperiences={setExperiences} />} />
+          <Route
+            path="/create"
+            element={<CreateSpot setExperiences={setExperiences} />}
+          />
           <Route path="/" element={<HomePage experiences={experiences} />} />
-          <Route path="/login" element={<LoginPage infos={infos} setInfos={setInfos} />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/:id" element={<Spot experiences={experiences} />} />
         </Routes>

@@ -14,7 +14,7 @@ const LoginForm = ({ setOpen }) => {
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [infos, setInfos] = useState({ username: "", password: "" });
   const navigate = useNavigate();
-  const { storeToken } = useContext(AuthContext);
+  const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +22,7 @@ const LoginForm = ({ setOpen }) => {
       .post("http://localhost:5005/auth/login", infos)
       .then((response) => {
         storeToken(response.data);
+        authenticateUser();
         setOpen(false);
         navigate("/");
       })
@@ -44,12 +45,34 @@ const LoginForm = ({ setOpen }) => {
       }}
     >
       <ModalClose variant="outlined" />
-      <Typography component="h2" id="close-modal-title" level="h4" textColor="inherit" fontWeight="lg">
+      <Typography
+        component="h2"
+        id="close-modal-title"
+        level="h4"
+        textColor="inherit"
+        fontWeight="lg"
+      >
         <form onSubmit={handleLoginSubmit}>
-          <TextField label="Username" value={infos.username} name="username" placeholder="Username" onChange={handleChange} required />
-          <TextField label="Password" value={infos.password} name="password" type={"password"} placeholder="Password" onChange={handleChange} required />
+          <TextField
+            label="Username"
+            value={infos.username}
+            name="username"
+            placeholder="Username"
+            onChange={handleChange}
+            required
+          />
+          <TextField
+            label="Password"
+            value={infos.password}
+            name="password"
+            type={"password"}
+            placeholder="Password"
+            onChange={handleChange}
+            required
+          />
           {errorMessage && <p>{errorMessage}</p>}
-          <Button type={"submit"}>Login</Button> {/* insertion du boutton signup */}
+          <Button type={"submit"}>Login</Button>{" "}
+          {/* insertion du boutton signup */}
           <p>Don't have an account ? Sign up to take part of the journey !</p>
           <Link to={"/signup"} onClick={() => setOpen(false)}>
             Sign up

@@ -12,9 +12,11 @@
 .title_item {
   position: relative;
 }
+.main-toolbar {
+  justify-content: space-between;
+}
 .homepage-body {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -24,17 +26,7 @@
   width: 100vw;
   text-align: left;
   padding: 3rem;
-  background-color: rgb(255, 0, 0);
-}
-
-.appbar {
-  background-color: rgb(0, 4, 255);
-  min-height: 10rem;
-}
-
-html,
-body {
-  height: 100%;
+  border: solid 2px;
 }
 
 .container {
@@ -53,4 +45,17 @@ body {
 }
 button {
   height: 40px;
+}
+.navigation-bar {
+  align-items: center;
+  background-color: #fff;
+  display: flex;
+  height: 62px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.website-header {
+  display: block;
+  justify-content: space-between;
 }
