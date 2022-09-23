@@ -54,7 +54,6 @@ function App() {
   return (
     <div className="App">
       <header className="website-header">
-        <nav className="navigation-bar">NavBar</nav>
         <ResponsiveAppBar setLogged={setLogged} users={users} />
         <Routes>
           <Route
